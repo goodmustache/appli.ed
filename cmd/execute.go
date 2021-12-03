@@ -1,7 +1,7 @@
 package cmd
 
 type PositionalArgs struct {
-	Path string `positional-arg-name:"PATH_TO_SEARCH" required:"true" description:"The path of the directory containing the *.ed directories"`
+	ConfigPath string `positional-arg-name:"PATH_TO_CONFIG" required:"true" description:"Path to the appli.ed configuration file."`
 }
 
 type Execute struct {
@@ -11,5 +11,11 @@ type Execute struct {
 }
 
 func (e Execute) Execute(args []string) error {
+	e.UI.DisplayText(
+		"Reading config '{{.Path}}'",
+		map[string]interface{}{
+			"Path": e.Positional.ConfigPath,
+		},
+	)
 	return nil
 }

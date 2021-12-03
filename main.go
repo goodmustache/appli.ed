@@ -14,15 +14,15 @@ func main() {
 	}
 	parser := flags.NewParser(command, flags.HelpFlag)
 
-	extraArgs, err := parser.ParseArgs(os.Args)
+	extraArgs, err := parser.ParseArgs(os.Args[1:])
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "appli.ed error: %s", err)
+		fmt.Fprintln(os.Stderr, "appli.ed error:", err.Error())
 		os.Exit(1)
 	}
 
 	err = command.Execute(extraArgs)
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "appli.ed error: %s", err)
+		fmt.Fprintln(os.Stderr, "appli.ed error", err.Error())
 		os.Exit(1)
 	}
 }
