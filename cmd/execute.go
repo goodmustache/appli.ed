@@ -13,6 +13,8 @@ type Execute struct {
 	Positional PositionalArgs `positional-args:"yes"`
 
 	LogLevel LogLevel `long:"log-level" env:"LOG_LEVEL" default:"INFO" description:"Log level of output" choice:"TRACE" choice:"DEBUG" choice:"INFO" choice:"WARN" choice:"ERROR" choice:"FATAL" choice:"PANIC"`
+
+	ConfigurationHandler ConfigurationHandler
 }
 
 func (command *Execute) Execute(args []string) error {

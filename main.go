@@ -5,6 +5,7 @@ import (
 	"os"
 
 	"github.com/goodmustache/appli.ed/cmd"
+	"github.com/goodmustache/appli.ed/configuration"
 	"github.com/jessevdk/go-flags"
 	log "github.com/sirupsen/logrus"
 )
@@ -12,7 +13,9 @@ import (
 func main() {
 	log.SetFormatter(&log.TextFormatter{FullTimestamp: true})
 
-	command := &cmd.Execute{}
+	command := &cmd.Execute{
+		ConfigurationHandler: configuration.NewHandler(),
+	}
 	parser := flags.NewParser(command, flags.HelpFlag)
 
 	extraArgs, err := parser.ParseArgs(os.Args[1:])
