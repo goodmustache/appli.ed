@@ -16,3 +16,6 @@
 
 # OSX files
 .DS_Store
+
+# Out directory
+/out

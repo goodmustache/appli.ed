@@ -17,7 +17,7 @@ func main() {
 
 	extraArgs, err := parser.ParseArgs(os.Args[1:])
 	if err != nil {
-		fmt.Fprintln(os.Stderr, "appli.ed error:", err.Error())
+		fmt.Fprintln(os.Stderr, err.Error())
 		os.Exit(1)
 	}
 

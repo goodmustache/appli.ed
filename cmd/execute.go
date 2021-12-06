@@ -12,10 +12,10 @@ type PositionalArgs struct {
 type Execute struct {
 	Positional PositionalArgs `positional-args:"yes"`
 
-	LogLevel LogLevel `long:"log-level" default:"INFO" description:"Log level of output" choice:"TRACE" choice:"DEBUG" choice:"INFO" choice:"WARN" choice:"ERROR" choice:"FATAL" choice:"PANIC"`
+	LogLevel LogLevel `long:"log-level" env:"LOG_LEVEL" default:"INFO" description:"Log level of output" choice:"TRACE" choice:"DEBUG" choice:"INFO" choice:"WARN" choice:"ERROR" choice:"FATAL" choice:"PANIC"`
 }
 
-func (e *Execute) Execute(args []string) error {
-	log.WithField("Path", e.Positional.ConfigPath).Info("provided config path")
+func (command *Execute) Execute(args []string) error {
+	log.WithField("Path", command.Positional.ConfigPath).Info("provided config path")
 	return nil
 }
